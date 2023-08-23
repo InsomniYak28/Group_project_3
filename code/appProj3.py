@@ -12,18 +12,13 @@ app = Flask(__name__)
 
 
 # Connect to the database
-conn = psycopg2.connect(database="flask_db", user="postgres",
+conn = psycopg2.connect(database="flaskAPI_db", user="postgres",
                         password="postgres", host="localhost", port="5432")
   
 # create a cursor
 cur = conn.cursor()
   
-# if you already have any table or not id doesnt matter this 
-# will create a products table for you.
-# cur.execute(
-#     '''CREATE TABLE IF NOT EXISTS products (id serial \
-#     PRIMARY KEY, name varchar(100), price float);''')
-  
+ 
 # Insert data from table
 cur.execute('''SELECT * FROM healthdata''')
 
@@ -39,24 +34,20 @@ conn.close()
 @app.route("/")
 def welcome():
     
-    return render_template(index.html)
+    return render_template('index.html')
   
 
 @app.route("/data")
 def info():
     
 
-    conn = psycopg2.connect(database="flask_db", user="postgres",
+    conn = psycopg2.connect(database="flaskAPI_db", user="postgres",
                         password="postgres", host="localhost", port="5432")
   
     # create a cursor
     cur = conn.cursor()
     
-    # if you already have any table or not id doesnt matter this 
-    # will create a products table for you.
-    # cur.execute(
-    #     '''CREATE TABLE IF NOT EXISTS products (id serial \
-    #     PRIMARY KEY, name varchar(100), price float);''')
+
     
     # Insert data from table
     cur.execute('''SELECT * FROM healthdata''')
