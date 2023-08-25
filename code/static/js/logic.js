@@ -1,5 +1,5 @@
 //api link
-const url = "";
+const url = "http://127.0.0.1:5000/data";
 
 //function updateCharts
 function updateCharts(sample) {
@@ -16,28 +16,31 @@ function updateCharts(sample) {
         console.log(result);
 
         //define variables
-        let yearStart = result.YearStart;
-        let yearEnd = result.YearEnd;
-        let locAbbr = result.LocationAbbr.slice(0,53).reverse();
-        let locDesc = result.LocationDesc.slice(0,53).reverse();
-        let topic = result.Topic.slice(0,7).reverse();
-        let topicDesc = result.TopicDesc.slice(0,11).reverse();
-        let dataValue = result.DataValue;
-        let cat = result.Category.slice(0,3).reverse();
-        let catDesc = result.CategoryDesc.slice(0,8).reverse();
-        let catAbbr = result.CategoryAbbr.slice(0,8).reverse();
-        let geoLoc = result.GeoLocation;
-
+        let locDesc = result.locationdesc.slice(0,52).reverse();
+        let topic = result.topic.slice(0,7).reverse();
+        let topicDesc = result.topicdesc.slice(0,13).reverse();
+        //let dataValue = result.datavalue;
+        //let category = result.category.slice(0,3).reverse();
+        //let catDesc = result.categorydescslice(0,8).reverse();
+        //let catAbbr = result.categoryabbr.slice(0,8).reverse();
+        //let lat = result.lat;
+        //let lon = result.lon;
+        //let year = result.year.slice(0,11).reverse();
+        //let locAbbr = result.locationabbr.slice(0,52).reverse();
 
         //pie chart by state, top morbidities
         let trace1 = [{
           values: topic,
           labels: topic,
           type: "pie",
-          hoverInfo: topicDesc
+          name: locDesc,
+          hoverinfo: "label+percent",
+          textposition: "outside"
         }];
         let layout = {
-            title: "Mortality %"
+            height: 400,
+            width: 500,
+            title: "Mortality % in ${locDesc}"
         };
 
         Plotly.newPlot("pie", trace1, layout);
@@ -54,12 +57,12 @@ function init() {
 
     d3.json(url).then(function (data) {
 
-        let dropStates = data.LocationDesc;
-        console.log(dropStates);
-        for (let i = 0; i < dropStates.length; i++) {
-            dropDown.append("option").text(dropStates[i]).property("value", dropStates[i]);
+        let states = data.locDesc;
+        console.log(states);
+        for (let i = 0; i < states.length; i++) {
+            dropDown.append("option").text(states[i]).property("value", states[i]);
         }
-        updateCharts(dropStates[0]);
+        updateCharts(states[0]);
     });
 }
 //update plots
