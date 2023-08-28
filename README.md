@@ -35,5 +35,8 @@ Process:
 Data source(s):
 https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi
 
+Helpful links:
+https://flask-cors.readthedocs.io/en/latest/
+
 Link to Repo:
 https://github.com/InsomniYak28/Group_project_3.git
