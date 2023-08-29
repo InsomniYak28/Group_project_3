@@ -66,13 +66,14 @@ function updateMeta(params) {
 function init() {
     let dropDown = d3.select("#selDataset");
 
-    fetch("./health_data.json").then(function (data) {
-        let states = data.statesArray;
-        console.log(states);
-        for (let i = 0; i < states.length; i++) {
-            dropDown.append("option").text(states[i]).property("value", states[i]);
-        }
-        updateCharts(states[0]);
+    d3.json(url).then(function (data) {
+        // let states = data.statesArray;
+        // console.log(states);
+        // for (let i = 0; i < states.length; i++) {
+        //     dropDown.append("option").text(states[i]).property("value", states[i]);
+        // }
+        // updateCharts(states[0]);
+        console.log(data);
     });
 }
 //update plots
