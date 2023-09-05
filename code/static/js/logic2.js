@@ -1,7 +1,7 @@
 //api link
-let url = "http://127.0.0.1:5000/data";
+let url2 = "http://127.0.0.1:5000/data";
 
-d3.json(url).then(function (data) {
+d3.json(url2).then(function (data) {
   let result = data.data;
   //console.log("result", result);
 
@@ -142,12 +142,6 @@ let overValues = Object.values(overData);
             fill : false
           } ]
     },
-    options : {
-      title : {
-        display : true,
-        text : 'Mortality over Time'
-      }
-    }
   });
 
 })

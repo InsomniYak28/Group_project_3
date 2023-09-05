@@ -7,23 +7,18 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mortality from Chronic Diseases in the US</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-      <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin="" />
-
-  <!-- Leaflet JavaScript code -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-    crossorigin=""></script>
-
-  <!-- Our CSS -->
-  <link rel="stylesheet" type="text/css" href="../static/css/style.css">
-
   <script src="https://d3js.org/d3.v7.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+  <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+
 </head>
 
 <body>
@@ -32,40 +27,51 @@
     <div class="row">
       <div class="col-md-12 jumbotron text-center">
         <h1>Mortality from Chronic Diseases in the US</h1>
-        <p>from 2010-2020</p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <div class="well">
-          <h5>View Data by State:</h5>
-          <select id="selDataset" onchange="optionChanged(this.value)"></select>
-        </div>
-        <div class="col-md-5">
-          <canvas id="pie"></canvas>
+        <p>~from 2010-2020~</p>
+        <div class="my-link">
+          <p>You can view the original dataset here:</p>
+          <a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi"> Chronic Disease Data </a>
         </div>
       </div>
-      <div class="col-md-5">
-        <div id="line"></div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>% of Mortalities by State</h2>
+          <div class="well">
+            <h5>Choose a State or Disctrict:</h5>
+            <select id="selDataset" onchange="optionChanged(this.value)"></select>
+          <div>
+            <div class="col-md-12">
+              <div>
+                <div id="pie" width="400" height="400"></div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <div id="map"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Mortality Trends over Time</h2>
+          <canvas id="line" width="600" height="400"></canvas>
+        </div>
       </div>
-      <div class="my-link">
-        <p>You can view the original dataset here:</p>
-        <a href="https://catalog.data.gov/dataset/u-s-chronic-disease-indicators-cdi"> Healthcare Data </a>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Demographics</h2>
+          <div id="map" width="800" height="600"></div>
+        </div>
       </div>
     </div>
   </div>
-
-   <!-- JavaScript files -->
-  <!-- <script type="text/javascript" src="./static/js/logic.js"></script> -->
-  <!-- <script type="text/javascript" src="static/js/logic2.js"></script>
-  <script type="text/javascript" src="static/js/logic3.js"></script> -->
-  <script type="text/javascript" src="../static/js/logic4.js"></script>
-
+  <script type="text/javascript" src="./static/js/logic.js"></script>
+  <script type="text/javascript" src="static/js/logic2.js"></script>
+  <script type="text/javascript" src="static/js/map.js"></script>
 
 </body>
 
