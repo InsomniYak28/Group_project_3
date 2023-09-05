@@ -36,14 +36,8 @@ function updateCharts(sample) {
             values: values,
             type: "pie"
         }];
-
-        let layout = {
-            title: {
-                text: "Mortality %"
-            },
-        };
-
-        Plotly.newPlot("pie", pieData, layout);
+        
+        Plotly.newPlot("pie", pieData);
     });
 }
 
